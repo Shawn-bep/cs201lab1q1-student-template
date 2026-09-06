@@ -20,6 +20,48 @@ public class NumbersArray {
     }
 
     // Write your methods here
-    
+    public static int findMax(Integer[] arr) {
+        int max = arr[0];
+        for (int i : arr) {
+            if (i > max) {
+                max = i;
+            }
+        }
+        return max;
+    }
+
+    public static Integer[] findDuplicates(Integer[] arr) {
+        Map<Integer, Integer> counts = new LinkedHashMap<>();
+        for (int num : arr) {
+            counts.put(num, counts.getOrDefault(num, 0) + 1);
+        }
+
+        List<Integer> duplicates = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
+            if (entry.getValue() > 1) {
+                duplicates.add(entry.getKey());
+            }
+        }
+
+        return duplicates.toArray(new Integer[0]);
+    }
+
+    public static Integer[] findUnique(Integer[] arr) {
+        Map<Integer, Integer> counts = new LinkedHashMap<>();
+        for (int num : arr) {
+            counts.put(num, counts.getOrDefault(num, 0) + 1);
+        }
+
+        List<Integer> uniques = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
+            if (entry.getValue() == 1) {
+                uniques.add(entry.getKey());
+            }
+        }
+
+        return uniques.toArray(new Integer[0]);
+    }
+
+
 }
 
